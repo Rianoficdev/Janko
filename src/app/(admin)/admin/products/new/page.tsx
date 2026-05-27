@@ -12,7 +12,7 @@ export default async function NewProductPage() {
       <AdminHeader
         eyebrow="Novo produto"
         title="Criar produto real."
-        description="Formulario conectado ao Supabase com status, afiliado/dropshipping, SEO, imagens e categoria real."
+        description="Formulario conectado ao Supabase com status, tipo de venda, SEO, imagens e categoria real."
       />
       <ProductForm mode="create" categories={categories} />
     </div>

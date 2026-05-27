@@ -4,6 +4,7 @@ import { AdminHeader } from "@/components/admin/admin-header";
 import { DeleteProductButton } from "@/components/admin/delete-product-button";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { productStatusLabels, productTypeLabels } from "@/lib/product-labels";
 import { formatPrice } from "@/lib/utils";
 import { listProductsAdmin } from "@/services/products";
 
@@ -81,12 +82,12 @@ export default async function AdminProductsPage() {
                     </td>
                     <td className="p-4">
                       <span className="rounded-full border border-blue-300/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-100">
-                        {product.type}
+                        {productTypeLabels[product.type]}
                       </span>
                     </td>
                     <td className="p-4">
                       <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-xs font-semibold text-zinc-200">
-                        {product.status}
+                        {productStatusLabels[product.status]}
                       </span>
                     </td>
                     <td className="p-4">{formatPrice(product.price)}</td>

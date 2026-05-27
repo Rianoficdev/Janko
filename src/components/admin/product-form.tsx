@@ -9,6 +9,7 @@ import { createProductAction, updateProductAction } from "@/app/(admin)/admin/pr
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { productStatusLabels, productTypeLabels, sourcePlatformLabels } from "@/lib/product-labels";
 import { slugify } from "@/lib/slugify";
 import type { Category, Product, ProductFormData, ProductStatus, ProductType, SourcePlatform } from "@/types/product";
 
@@ -168,16 +169,16 @@ export function ProductForm({
           <label className="space-y-2">
             <span className="text-sm font-semibold text-zinc-300">Tipo</span>
             <select value={form.type} onChange={(event) => updateField("type", event.target.value as ProductType)} className={selectClass}>
-              <option value="affiliate">affiliate</option>
-              <option value="dropshipping">dropshipping</option>
+              <option value="affiliate">{productTypeLabels.affiliate}</option>
+              <option value="dropshipping">{productTypeLabels.dropshipping}</option>
             </select>
           </label>
           <label className="space-y-2">
             <span className="text-sm font-semibold text-zinc-300">Status</span>
             <select value={form.status} onChange={(event) => updateField("status", event.target.value as ProductStatus)} className={selectClass}>
-              <option value="draft">draft</option>
-              <option value="published">published</option>
-              <option value="archived">archived</option>
+              <option value="draft">{productStatusLabels.draft}</option>
+              <option value="published">{productStatusLabels.published}</option>
+              <option value="archived">{productStatusLabels.archived}</option>
             </select>
           </label>
 
@@ -191,10 +192,10 @@ export function ProductForm({
           <label className="space-y-2">
             <span className="text-sm font-semibold text-zinc-300">Plataforma</span>
             <select value={form.sourcePlatform} onChange={(event) => updateField("sourcePlatform", event.target.value as SourcePlatform)} className={selectClass}>
-              <option value="amazon">amazon</option>
-              <option value="shopee">shopee</option>
-              <option value="aliexpress">aliexpress</option>
-              <option value="manual">manual</option>
+              <option value="amazon">{sourcePlatformLabels.amazon}</option>
+              <option value="shopee">{sourcePlatformLabels.shopee}</option>
+              <option value="aliexpress">{sourcePlatformLabels.aliexpress}</option>
+              <option value="manual">{sourcePlatformLabels.manual}</option>
             </select>
           </label>
           <label className="space-y-2">
@@ -280,13 +281,15 @@ export function ProductForm({
           </div>
           <div className="p-3">
             <p className="text-lg font-bold text-white">{form.title || "Nome do produto"}</p>
-            <p className="mt-1 text-sm text-zinc-400">{form.status} · {form.type}</p>
+            <p className="mt-1 text-sm text-zinc-400">
+              {productStatusLabels[form.status]} · {productTypeLabels[form.type]}
+            </p>
           </div>
         </Card>
         <Card className="p-5">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-blue-300">Supabase real</p>
           <p className="mt-3 text-sm leading-7 text-zinc-400">
-            Ao salvar, o produto e gravado na tabela products e passa a aparecer na loja se estiver published.
+            Ao salvar, o produto e gravado na tabela products e passa a aparecer na loja quando estiver publicado.
           </p>
         </Card>
       </aside>

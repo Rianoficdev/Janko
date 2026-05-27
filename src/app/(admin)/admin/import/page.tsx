@@ -9,7 +9,7 @@ export default function AdminImportPage() {
     <div className="space-y-6">
       <AdminHeader
         eyebrow="Importador"
-        title="Criar draft por link."
+        title="Criar rascunho por link."
         description="Fluxo preparado para Fase 2: colar link, identificar plataforma, gerar rascunho e revisar antes de publicar."
       />
 
@@ -32,7 +32,7 @@ export default function AdminImportPage() {
           <Sparkles className="h-5 w-5 text-blue-300" />
           <h2 className="mt-4 text-xl font-bold text-white">Proxima etapa</h2>
           <p className="mt-3 text-sm leading-7 text-zinc-400">
-            Os scrapers ficam isolados em /scrapers e devem criar produtos com status draft para revisao no admin.
+            Os importadores ficam isolados em /scrapers e devem criar produtos como rascunho para revisao no admin.
           </p>
         </Card>
       </div>

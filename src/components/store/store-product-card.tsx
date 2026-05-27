@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { productTypeLabels } from "@/lib/product-labels";
 import { formatPrice } from "@/lib/utils";
 import type { Product } from "@/types/product";
 
@@ -29,7 +30,7 @@ export function StoreProductCard({ product }: { product: Product }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
           <div className="absolute left-4 top-4 flex flex-wrap gap-2">
             <Badge className="border-blue-300/30 bg-blue-500/15 text-blue-100">
-              {product.type === "affiliate" ? "Afiliado" : "Dropshipping"}
+              {productTypeLabels[product.type]}
             </Badge>
             {product.featured && <Badge>Destaque</Badge>}
           </div>

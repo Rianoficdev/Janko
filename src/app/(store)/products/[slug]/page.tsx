@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ProductPurchaseActions } from "@/components/store/product-purchase-actions";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { productTypeLabels, sourcePlatformLabels } from "@/lib/product-labels";
 import { formatPrice } from "@/lib/utils";
 import { listCategories } from "@/services/categories";
 import { getProductBySlug } from "@/services/products";
@@ -71,7 +72,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <section className="lg:sticky lg:top-28 lg:self-start">
           <div className="flex flex-wrap gap-2">
             <Badge className="border-blue-300/30 bg-blue-500/15 text-blue-100">
-              {product.type === "affiliate" ? "Afiliado" : "Dropshipping"}
+              {productTypeLabels[product.type]}
             </Badge>
             {product.featured && <Badge>Destaque</Badge>}
             {category && <Badge>{category.name}</Badge>}
@@ -94,7 +95,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <h2 className="text-xl font-bold">Detalhes</h2>
               <div className="mt-4 grid gap-2 text-sm text-zinc-400">
                 <p>Categoria: {category?.name ?? "Sem categoria"}</p>
-                <p>Origem: {product.sourcePlatform}</p>
+                <p>Origem: {sourcePlatformLabels[product.sourcePlatform]}</p>
                 {product.sku && <p>SKU: {product.sku}</p>}
               </div>
             </div>
